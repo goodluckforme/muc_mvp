@@ -8,7 +8,7 @@
     <global id="relativePackage" value="${ativityPackageName}" />
     <global id="activityClass" value="${pageName}Activity" />
     <global id="muchAppProjectName" type="string" value="app" />
-    <global id="muchAppOut" type="string" value="${escapeXmlAttribute('./' + (muchAppProjectName?default('youxian')))}" />
+    <global id="muchAppOut" type="string" value="${escapeXmlAttribute('./' + (muchAppProjectName?default('app')))}" />
     <global id="topOut" value="." />
     <#include "../common/common_globals.xml.ftl" />
 </globals>

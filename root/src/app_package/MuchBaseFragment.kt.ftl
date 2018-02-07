@@ -17,7 +17,7 @@ abstract class BaseFragment : Fragment() {
     protected var rootView: View? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (null == rootView) rootView = View.inflate(context, getLayoutRes(), null)
+        if (null == rootView) rootView = View.inflate(activity, getLayoutRes(), null)
         return rootView
     }
 
