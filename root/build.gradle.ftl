@@ -67,9 +67,7 @@ android {
             dirs 'libs'
         }
     }
-    dataBinding {
-        enabled true
-    }
+
 }
 kapt {
     generateStubs = true
