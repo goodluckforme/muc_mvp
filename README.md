@@ -1,4 +1,4 @@
-# muc_mvp
+# muc_mvp   这是一个测试版  主要为了加入DataBinding模块 并 进一步优化代码
 我的MVP一键模板终于完成了  后期将考虑加入DataBind框架...
 ![image](https://github.com/goodluckforme/muc_mvp/blob/master/icon_MVP%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B.gif) 
 ![image](https://github.com/goodluckforme/muc_mvp/blob/master/icon_Template%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png) 
