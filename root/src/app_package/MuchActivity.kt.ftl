@@ -10,7 +10,7 @@ import ${dataBindingPackageName}.Activity${pageName}Binding
 import ${packageName}.R
 import android.databinding.DataBindingUtil
 
-class ${pageName}Activity:BaseActivity<${pageName}Presenter, ${pageName}Contract.View>,${pageName}Contract.View {
+class ${pageName}Activity:BaseActivity<${pageName}Presenter, ${pageName}Contract.View>(),${pageName}Contract.View {
 
     override fun setActivityComponent(appComponent: AppComponent) {
         Dagger${pageName}Component //如找不到该类,请编译一下项目
