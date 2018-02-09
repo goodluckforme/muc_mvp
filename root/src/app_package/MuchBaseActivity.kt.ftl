@@ -5,15 +5,15 @@ import android.content.pm.ActivityInfo
 import android.support.v7.app.AppCompatActivity
 import ${packageName}.App
 import ${componentPackageName}.AppComponent
-import org.jetbrains.anko.sdk25.coroutines.onClick
+import ${baseContractPackageName}.BaseContract
+import ${baseContractPackageName}.RxPresenter
+import javax.inject.Inject
 
-
-
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<T : RxPresenter<V>, V : BaseContract.BaseView> : AppCompatActivity(),BaseContract.BaseView  {
     var isFirst: Boolean = false
+     @Inject lateinit var mPresenter: T
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutRes())
         //QMUIStatusBarHelper.translucent(this, Color.parseColor("#ffffff"))
         //竖屏设置
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -21,15 +21,7 @@ abstract class BaseActivity : AppCompatActivity() {
         initView()
     }
 
-    /**
-     * 设置标题
-     *
-     * @param title
-     */
-    fun setTitleId(stringId: Int) {
-       
-    }
-
+   
     abstract fun setActivityComponent(appComponent: AppComponent)
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -48,10 +40,9 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    abstract fun getLayoutRes(): Int
-
     override fun onDestroy() {
         super.onDestroy()
+        mPresenter.detachView()
     }
    
 }

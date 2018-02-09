@@ -1,45 +1,35 @@
 package ${ativityPackageName}
 
-
+import ${apiMoudlePackageName}.Activity${pageName}BindingModule
 import ${packageName}.mvp.ui.base.BaseActivity
-import javax.inject.Inject
-import ${packageName}.mvp.presenter.${pageName}Presenter
-import ${packageName}.mvp.contract.${pageName}Contract
+import ${presenterPackageName}.${pageName}Presenter
+import ${contractPackageName}.${pageName}Contract
 import ${componentPackageName}.AppComponent
-import ${componentPackageName}.DaggerActivityComponent
+import ${componentPackageName}.Dagger${pageName}Component
+import ${dataBindingPackageName}.Activity${pageName}Binding
 import ${packageName}.R
+import android.databinding.DataBindingUtil
 
-
-class ${pageName}Activity:BaseActivity(),${pageName}Contract.View {
-
-    @Inject lateinit var ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter:${pageName}Presenter
+class ${pageName}Activity:BaseActivity<${pageName}Presenter, ${pageName}Contract.View>,${pageName}Contract.View {
 
     override fun setActivityComponent(appComponent: AppComponent) {
-        DaggerActivityComponent //如找不到该类,请编译一下项目
+        Dagger${pageName}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
+                .activity${pageName}BindingModule(Activity${pageName}BindingModule(DataBindingUtil.setContentView(this, R.layout.activity_${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)})))
                 .build()
                 .inject(this)
     }
 
-
     public override fun initView() {
         super.initView()
-
     }
 
     public override fun initData() {
-
+        super.initData()
+        mPresenter.attachView(this)
+        mPresenter.toInit()
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter.detachView()
-    }
-
-
-    override fun getLayoutRes(): Int= R.layout.${activityLayoutName}
-   
 
     override fun complete(msg: String) {
 

@@ -101,8 +101,19 @@
 </#if>
 
 <#if needcomponent>
-  <instantiate from="root/src/app_package/MuchActivityComponent.java.ftl"
-               to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/ActivityComponent.java"/>
+   <instantiate from="root/src/app_package/MuchActivityComponent.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/${pageName}Component.java"/>
+</#if>
+
+
+<#if needFragment>
+<instantiate from="root/src/app_package/FragmentBindingModule.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Fragment${pageName}BindingModule.java"/>
+</#if>
+
+<#if needActivity>
+<instantiate from="root/src/app_package/ActivityBindingModule.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.java"/>
 </#if>
 
 </recipe>

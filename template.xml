@@ -10,7 +10,7 @@
     <category value="Activity" />
     <formfactor value="Mobile" />
 
-      <parameter
+ <parameter
         id="needInintBase"
         name="Generate Base"
         type="boolean"
@@ -25,13 +25,20 @@
         suggest="${packageName}.common"
         visibility="needInintBase"
         help="BaseContract 的包名"/>
-
+ <parameter
+        id="dataBindingPackageName"
+        name="DataBinding Package Name"
+        type="string"
+        constraints="package"
+        suggest="${packageName}.databinding"
+        visibility="needInintBase"
+        help="DataBinding 的包名"/>
  <parameter
         id="apiMoudlePackageName"
         name="ApiMoudle Package Name"
         type="string"
         constraints="package"
-        suggest="${packageName}.moudle"
+        suggest="${packageName}.module"
         visibility="needInintBase"
         help="ApiMoudle 的包名"/>
 <parameter

@@ -1,25 +1,23 @@
 package ${ativityPackageName};
 
-
+import ${apiMoudlePackageName}.Activity${pageName}BindingModule;
 import ${packageName}.mvp.ui.base.BaseActivity;
-import javax.inject.Inject;
-import ${packageName}.mvp.presenter.${pageName}Presenter;
-import ${packageName}.mvp.contract.${pageName}Contract;
+import ${presenterPackageName}.${pageName}Presenter;
+import ${contractPackageName}.${pageName}Contract;
 import ${componentPackageName}.AppComponent;
-import ${componentPackageName}.DaggerActivityComponent;
+import ${componentPackageName}.Dagger${pageName}Component;
+import ${dataBindingPackageName}.Activity${pageName}Binding;
 import ${packageName}.R;
+import android.databinding.DataBindingUtil;
 
-
-
-public class ${pageName}Activity extends BaseActivity implements ${pageName}Contract.View {
-
-    public @Inject ${pageName}Presenter ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter;
+public class ${pageName}Activity extends BaseActivity<${pageName}Presenter, ${pageName}Contract.View> implements ${pageName}Contract.View {
 
     @Override
     public void setActivityComponent(AppComponent appComponent) {
-        DaggerActivityComponent //如找不到该类,请编译一下项目
+        Dagger${pageName}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
+                .activity${pageName}BindingModule(new Activity${pageName}BindingModule(DataBindingUtil.<Activity${pageName}Binding>setContentView(this,R.layout.activity_${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)})))
                 .build()
                 .inject(this);
     }
@@ -34,18 +32,7 @@ public class ${pageName}Activity extends BaseActivity implements ${pageName}Cont
 
     @Override
     public void initData() {
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter.detachView();
-    }
-
-    @Override
-    public int getLayoutRes() {
-        return R.layout.${activityLayoutName};
+        super.initData();
     }
 
     @Override

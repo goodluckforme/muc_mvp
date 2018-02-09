@@ -68,7 +68,9 @@ android {
         }
     }
 
-
+    dataBinding {
+        enabled true
+    }
 
 }
 kapt {
@@ -88,7 +90,8 @@ dependencies {
     // Rx
     implementation 'io.reactivex:rxandroid:1.1.0'
     implementation 'io.reactivex:rxjava:1.1.5'
-
+    //DataBind
+    kapt "com.android.databinding:compiler:2.3.0"
     //网络框架
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
