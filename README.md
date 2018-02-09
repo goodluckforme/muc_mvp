@@ -29,5 +29,5 @@ module 路径修改
 
 修改Fragment部分
 
-***********DataBind的Module层使用java
+***********只完成了  Activity部分  并且  DataBind的Module层目前只允许使用JAVA的
 
