@@ -22,16 +22,16 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
-public class AppModule {
-    public Context context;
+	@Module
+	public class AppModule {
+	    public Context context;
 
-    public AppModule(Context context) {
-        this.context = context;
-    }
+	    public AppModule(Context context) {
+	        this.context = context;
+	    }
 
-    @Provides
-    public Context provideContext() {
-        return context;
-    }
-}
+	    @Provides
+	    public Context provideContext() {
+	        return context;
+	    }
+	}

@@ -12,7 +12,7 @@ import ${fragmentPackageName}.${pageName}Fragment;
 import ${apiMoudlePackageName}.<#if needActivity>Activity<#else>Fragment</#if>${pageName}BindingModule;
 
 import dagger.Component;
-@Component(dependencies = AppComponent.class,modules = {<#if needActivity>Activity<#else>Fragment</#if>${pageName}BindingModule.class})
+@Component(dependencies = AppComponent.class,modules = {<#if needActivity>Activity<#else>Fragment</#if>${pageName}BindingModule.class}
 public interface ${pageName}Component {
   <#if needActivity && needFragment>
 	void inject(${pageName}Activity activity);

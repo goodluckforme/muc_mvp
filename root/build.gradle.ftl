@@ -8,7 +8,7 @@ def releaseTime() {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "${packageName}"
@@ -85,8 +85,9 @@ dependencies {
     implementation "org.jetbrains.anko:anko:$anko_version"
     //kapt rootProject.ext.dependencies["dagger2-compiler"]
     kapt 'com.google.dagger:dagger-compiler:2.5'
-    compile 'com.google.dagger:dagger:2.5'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.google.dagger:dagger:2.5'
+    
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     // Rx
     implementation 'io.reactivex:rxandroid:1.1.0'
     implementation 'io.reactivex:rxjava:1.1.5'

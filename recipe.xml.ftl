@@ -40,9 +40,15 @@
 </#if>
 
 <#if needPresenter>
-    <instantiate from="root/src/app_package/MuchPresenter.java.ftl"
+   <#if generateKotlin>
+   <instantiate from="root/src/app_package/MuchPresenter.kt.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.kt" />
+    <open file="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.kt" />
+    <#else>
+   <instantiate from="root/src/app_package/MuchPresenter.java.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.java" />
     <open file="${projectOut}/src/main/java/${slashedPackageName(presenterPackageName)}/${pageName}Presenter.java" />
+    </#if>
 </#if>
 
 <#if needContract>
@@ -81,7 +87,7 @@
 
 <instantiate from="root/src/app_package/MuchRxPresenterModule.java.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/RxPresenter.java" />
-                   
+                 
 <instantiate from="root/src/app_package/MuchApiModule.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/ApiModule.kt" />
 
@@ -90,6 +96,8 @@
                    
 <instantiate from="root/src/app_package/MuchSharedPreferencesUtil.java.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(utilsPackageName)}/SharedPreferencesUtil.java" />
+<instantiate from="root/src/app_package/StartActivityUtils.kt.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(utilsPackageName)}/StartActivityUtils.kt" />
 
 <mkdir at="${muchAppOut}" />                  
 <instantiate from="root/build.gradle.ftl"
@@ -101,8 +109,13 @@
 </#if>
 
 <#if needcomponent>
-   <instantiate from="root/src/app_package/MuchActivityComponent.java.ftl"
-                 to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/${pageName}Component.java"/>
+    <#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchActivityComponent.kt.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/${pageName}Component.kt"/>
+    <#else>  
+    <instantiate from="root/src/app_package/MuchActivityComponent.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/${pageName}Component.java"/>               
+    </#if>                
 </#if>
 
 
@@ -112,8 +125,13 @@
 </#if>
 
 <#if needActivity>
-<instantiate from="root/src/app_package/ActivityBindingModule.java.ftl"
-                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.java"/>
+    <#if generateKotlin>
+    <instantiate from="root/src/app_package/ActivityBindingModule.kt.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.kt"/>
+    <#else>  
+    <instantiate from="root/src/app_package/ActivityBindingModule.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.java"/>           
+    </#if>
 </#if>
 
 </recipe>

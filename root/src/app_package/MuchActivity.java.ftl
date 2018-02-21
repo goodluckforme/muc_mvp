@@ -26,13 +26,14 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter, ${pa
     @Override
     public void initView() {
         super.initView();
-        
     }
 
 
     @Override
     public void initData() {
         super.initData();
+        mPresenter.attachView(this);
+        mPresenter.toInit();
     }
 
     @Override

@@ -16,6 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package ${apiMoudlePackageName};
 
 
@@ -26,7 +27,7 @@ import dagger.Provides;
 
 @Module
 public class Activity${pageName}BindingModule {
-    public Activity${pageName}Binding viewDataBinding;
+    public final Activity${pageName}Binding viewDataBinding;
 
     public Activity${pageName}BindingModule(Activity${pageName}Binding viewDataBinding) {
         this.viewDataBinding = viewDataBinding;

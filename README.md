@@ -29,5 +29,24 @@ module 路径修改
 
 修改Fragment部分
 
-***********只完成了  Activity部分  并且  DataBind的Module层目前只允许使用JAVA的
+***********只完成了  Activity部分  并且  DataBind 只允许使用java生成代码
+尝试解决上面的问题 
+1 修改ActivityTestBindingModule 为java文件  结果 ：失败   修改 var改为val  结果：成功
+2 修改Activity中的  DataBindingUtil.setContentView<ActivityTestBinding>(this, R.layout.activity_test)  结果：失败
+3 修改TestPresenter 删除private申明  结果：编译失败
+4 修改TestPresenter  全部加上private 和val 结果：编译失败
+5 修改MainPresenter 去掉private 加上val 结果：成功
+
+总结  只需要修改 1和4 两条即可。
+
+多个Activity且为kt生成部分完成      测试是否有问题ING
+
+***********以上的部分 kt生成部分  暂时作废  因为目前有一个无法解决的问题：Kotlin + DataBinding + Dagger2 三者共同存在时 编译时·	NonExistentClass 问题
+目前只知道 时kapt的自身限制 
+也就是 目前只支持Java + DataBinding + Dagger2 
+
+===========================================================================最终解决方案如下==============================================================================
+
+
+
 
