@@ -47,6 +47,10 @@ module 路径修改
 
 ===========================================================================最终解决方案如下==============================================================================
 
+这里查明原因如下https://github.com/gen0083/KotlinDaggerDataBinding  
+Kotlin + Dagger2 + DataBinding形成的独特的编译期BUG：NonExistentClass
+解决方法为不要让Dagger和DataBind同时使用 这是Kapt的一种限制;
+
 
 
 

@@ -8,8 +8,9 @@ import ${componentPackageName}.AppComponent
 import ${baseContractPackageName}.BaseContract
 import ${baseContractPackageName}.RxPresenter
 import javax.inject.Inject
+import android.databinding.ViewDataBinding
 
-abstract class BaseActivity<T : RxPresenter<V>, V : BaseContract.BaseView> : AppCompatActivity(),BaseContract.BaseView  {
+abstract class BaseActivity<T : RxPresenter<V,M>, V : BaseContract.BaseView,M:ViewDataBinding> : AppCompatActivity(),BaseContract.BaseView  {
     var isFirst: Boolean = false
      @Inject lateinit var mPresenter: T
     override fun onCreate(savedInstanceState: Bundle?) {

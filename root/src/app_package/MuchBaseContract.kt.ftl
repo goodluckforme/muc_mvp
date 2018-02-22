@@ -20,12 +20,15 @@ package ${baseContractPackageName}
 
 interface BaseContract {
 
-    interface BasePresenter<T> {
+     interface BasePresenter<T,M> {
 
         fun attachView(view: T)
 
         fun detachView()
+
+        fun getLayoutRes(contentView: M)
     }
+    
 
     interface BaseView {
         fun showError(msg: String="")

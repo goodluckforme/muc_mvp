@@ -52,8 +52,13 @@
 </#if>
 
 <#if needContract>
+  <#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchContract.kt.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(contractPackageName)}/${pageName}Contract.kt" />
+    <#else>  
     <instantiate from="root/src/app_package/MuchContract.java.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(contractPackageName)}/${pageName}Contract.java" />
+                   to="${projectOut}/src/main/java/${slashedPackageName(contractPackageName)}/${pageName}Contract.java" />     
+  </#if>  
 </#if>
 
 <#if needInintBase>
@@ -72,22 +77,40 @@
 
 <instantiate from="root/src/app_package/HttpResult.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(dataPackageName)}/HttpResult.kt" />
-
-<instantiate from="root/src/app_package/MuchBaseActivity.kt.ftl"
+<#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchBaseActivity.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/base/BaseActivity.kt" />
+    <#else>  
+    <instantiate from="root/src/app_package/MuchBaseActivity.java.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/base/BaseActivity.java" />       
+</#if> 
 
-<instantiate from="root/src/app_package/MuchBaseFragment.kt.ftl"
+<#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchBaseFragment.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/base/BaseFragment.kt" />
+    <#else>  
+    <instantiate from="root/src/app_package/MuchBaseFragment.java.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/base/BaseFragment.java" />       
+</#if>  
+
 
 <instantiate from="root/src/app_package/MuchComponent.java.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(componentPackageName)}/AppComponent.java" />
-
-<instantiate from="root/src/app_package/MuchBaseContract.kt.ftl"
+<#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchBaseContract.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/BaseContract.kt" />
+    <#else>  
+    <instantiate from="root/src/app_package/MuchBaseContract.java.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/BaseContract.java" />         
+</#if>  
+<#if generateKotlin>
+    <instantiate from="root/src/app_package/MuchRxPresenterModule.kt.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/RxPresenter.kt" />
+    <#else>  
+    <instantiate from="root/src/app_package/MuchRxPresenterModule.java.ftl"
+                   to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/RxPresenter.java" />         
+</#if>   
 
-<instantiate from="root/src/app_package/MuchRxPresenterModule.java.ftl"
-                   to="${projectOut}/src/main/java/${slashedPackageName(baseContractPackageName)}/RxPresenter.java" />
-                 
 <instantiate from="root/src/app_package/MuchApiModule.kt.ftl"
                    to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/ApiModule.kt" />
 
@@ -120,15 +143,14 @@
 
 
 <#if needFragment>
+  <#if !generateKotlin>
 <instantiate from="root/src/app_package/FragmentBindingModule.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Fragment${pageName}BindingModule.java"/>
+  </#if>
 </#if>
 
 <#if needActivity>
-    <#if generateKotlin>
-    <instantiate from="root/src/app_package/ActivityBindingModule.kt.ftl"
-                 to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.kt"/>
-    <#else>  
+    <#if !generateKotlin>
     <instantiate from="root/src/app_package/ActivityBindingModule.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(apiMoudlePackageName)}/Activity${pageName}BindingModule.java"/>           
     </#if>

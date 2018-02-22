@@ -1,25 +1,23 @@
 package ${fragmentPackageName}
 
-import javax.inject.Inject
-import ${packageName}.mvp.presenter.${pageName}Presenter
-import ${packageName}.mvp.contract.${pageName}Contract
+import ${presenterPackageName}.${pageName}Presenter
+import ${contractPackageName}.${pageName}Contract
 import ${componentPackageName}.AppComponent
-import ${componentPackageName}.DaggerActivityComponent
+import ${componentPackageName}.Dagger${pageName}Component
 import ${packageName}.mvp.ui.base.BaseFragment
 import ${packageName}.R
+import ${dataBindingPackageName}.Fragment${pageName}Binding
 
-class ${pageName}Fragment:BaseFragment(),${pageName}Contract.View {
-
-    @Inject lateinit var ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter:${pageName}Presenter
+class ${pageName}Fragment:BaseFragment<${pageName}Presenter, ${pageName}Contract.View, Fragment${pageName}Binding>(),${pageName}Contract.View {
 
     companion object {
-        fun newInstance():  ${pageName}Fragment {
+        fun newInstance():${pageName}Fragment {
             return  ${pageName}Fragment()
         }
     }
 
     override fun setFragmentComponent(appComponent: AppComponent) {
-        DaggerActivityComponent //如找不到该类,请编译一下项目
+        Dagger${pageName}Component //如找不到该类,请编译一下项目
                 .builder()
                 .appComponent(appComponent)
                 .build()
@@ -28,12 +26,13 @@ class ${pageName}Fragment:BaseFragment(),${pageName}Contract.View {
 
 
     override fun attachView() {
-
+        mPresenter.attachView(this)
+        mPresenter.getLayoutRes(mDataBinding ?: return)
     }
 
 
-    public override fun initData() {
-
+    override fun initData() {
+        mPresenter.toInit()
     }
 
     override fun getLayoutRes(): Int= R.layout.${fragmentLayoutName}
@@ -48,6 +47,6 @@ class ${pageName}Fragment:BaseFragment(),${pageName}Contract.View {
     }
 
     override fun detachView() {
-        ${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Presenter.detachView()
+        mPresenter.detachView()
     }
 }

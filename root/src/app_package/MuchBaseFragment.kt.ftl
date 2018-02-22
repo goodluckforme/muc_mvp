@@ -8,17 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import ${packageName}.App
 import ${componentPackageName}.AppComponent
+import ${baseContractPackageName}.BaseContract
+import ${baseContractPackageName}.RxPresenter
+import javax.inject.Inject
+import android.databinding.ViewDataBinding
+import android.databinding.DataBindingUtil
 
-
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment<T : RxPresenter<V, M>, V : BaseContract.BaseView, M : ViewDataBinding> : Fragment() {
 
     var isViewPrepared: Boolean = false
     var hasFetchData: Boolean = false
-    protected var rootView: View? = null
+    @Inject lateinit var mPresenter: T
+    protected var mDataBinding: M? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (null == rootView) rootView = View.inflate(activity, getLayoutRes(), null)
-        return rootView
+        if (null == mDataBinding) {
+            mDataBinding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false)
+        }
+        return mDataBinding?.root
     }
 
     protected abstract fun getLayoutRes(): Int
