@@ -55,6 +55,14 @@ Kotlin + Dagger2 + DataBinding形成的独特的编译期BUG：NonExistentClass
 解决方法为不要让Dagger和DataBind同时使用 这是Kapt的一种限制;
 
 
+为此:
+我完成了 Kotlin Java 两个版本的 模板 并且由于DataBinding的限制 java 和 Kotlin 两个版本的基类有所不同 并且不兼容 除非删除DataBinding
+###切记 一旦选择好使用哪个版本就不要在更换了
+这个是Java代码的 demo
+[(app-JAVA)](https://github.com/goodluckforme/muc_mvp/blob/second/app-JAVA.rar)
+
+这个是Kotlin代码的 demo
+[(app-Koltin)](https://github.com/goodluckforme/muc_mvp/blob/second/app-Koltin.rar)
 
 
 
