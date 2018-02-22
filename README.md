@@ -32,7 +32,7 @@
 
 第二版优化持续优化中·········
 
-==================================================================此处为解决DataBinding与Dagger2的在Kapt的情况下编译不通过问题的解决方案==============================================================================
+=============================此处为解决DataBinding与Dagger2的在Kapt的情况下编译不通过问题的解决方案======================================
 ***********只完成了  Activity部分  并且  DataBind 只允许使用java生成代码
 尝试解决上面的问题 
 1 修改ActivityTestBindingModule 为java文件  结果 ：失败   修改 var改为val  结果：成功
@@ -48,13 +48,22 @@
 ***********以上的部分 kt生成部分  暂时作废  因为目前有一个无法解决的问题：Kotlin + DataBinding + Dagger2 三者共同存在时 编译时·	NonExistentClass 问题
 目前只知道 时kapt的自身限制 
 也就是 目前只支持Java + DataBinding + Dagger2 
-===========================================================================最终解决方案如下==============================================================================
+======================================================最终解决方案如下====================================================================
 
 这里查明原因如下https://github.com/gen0083/KotlinDaggerDataBinding  
 Kotlin + Dagger2 + DataBinding形成的独特的编译期BUG：NonExistentClass
 解决方法为不要让Dagger和DataBind同时使用 这是Kapt的一种限制;
 
 
+为此:
+我完成了 Kotlin Java 两个版本的 模板 并且由于DataBinding的限制 java 和 Kotlin 两个版本的基类有所不同 并且不兼容 除非删除DataBinding
+###切记 一旦选择好使用哪个版本就不要在更换了
+
+这个是Java代码的 demo
+[(app-JAVA)](https://github.com/goodluckforme/muc_mvp/blob/second/app-JAVA.rar)
+
+这个是Kotlin代码的 demo
+[(app-Koltin)](https://github.com/goodluckforme/muc_mvp/blob/second/app-Koltin.rar)
 
 
 
