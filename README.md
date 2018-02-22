@@ -7,28 +7,32 @@
 
 
 
-第二版优化正在优化中···
-module gradle 中加入 databind
+第二版优化正在优化中·········
+1 module gradle 中加入 databind
 
-module 路径修改
+2 module 路径修改
 
-修改recipe
-动态加入 ActivityMainComponent 以前是单一的ActivityComponent
+3 修改recipe
 
-加入module DataBindingModule
+4 动态加入 ActivityMainComponent 以前是单一的ActivityComponent
 
-修改 BaseActivity
+5 加入module DataBindingModule
 
-修改Presenter   只有 Activity部分  这里只能生成一个Presenter 不分离
+6 修改 BaseActivity
 
-修改布局 
+7 修改Presenter   只有 Activity部分  这里只能生成一个Presenter 不分离
+ 
+8 修改布局 
 
-修改Activity 
+9 修改Activity 
 
-多个Activity场景完成
+10 多个Activity场景完成
 
-修改Fragment部分
+11 修改Fragment部分
 
+第二版优化持续优化中·········
+
+==================================================================此处为解决DataBinding与Dagger2的在Kapt的情况下编译不通过问题的解决方案==============================================================================
 ***********只完成了  Activity部分  并且  DataBind 只允许使用java生成代码
 尝试解决上面的问题 
 1 修改ActivityTestBindingModule 为java文件  结果 ：失败   修改 var改为val  结果：成功
@@ -44,12 +48,12 @@ module 路径修改
 ***********以上的部分 kt生成部分  暂时作废  因为目前有一个无法解决的问题：Kotlin + DataBinding + Dagger2 三者共同存在时 编译时·	NonExistentClass 问题
 目前只知道 时kapt的自身限制 
 也就是 目前只支持Java + DataBinding + Dagger2 
-
 ===========================================================================最终解决方案如下==============================================================================
 
 这里查明原因如下https://github.com/gen0083/KotlinDaggerDataBinding  
 Kotlin + Dagger2 + DataBinding形成的独特的编译期BUG：NonExistentClass
 解决方法为不要让Dagger和DataBind同时使用 这是Kapt的一种限制;
+
 
 
 
