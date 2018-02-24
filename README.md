@@ -63,7 +63,7 @@ Kotlin + Dagger2 + DataBinding形成的独特的编译期BUG：NonExistentClass
 [(app-JAVA)](https://github.com/goodluckforme/muc_mvp/blob/second/app-JAVA.rar)
 
 这个是Kotlin代码的 demo
-[(app-Koltin)](https://github.com/goodluckforme/muc_mvp/blob/second/app-Koltin.rar)
+[(app-Koltin)](https://github.com/goodluckforme/muc_mvp/blob/second/app-Kotlin2.rar)
 
 
 
